@@ -14,7 +14,6 @@ import useAuthCalls from "../service/useAuthCalls"
 function Dashboard() {
   const navigate=useNavigate()
   const {logout}=useAuthCalls()
-  const dispatch=useDispatch()
   const user = useSelector((state)=> state.auth) //globalden okuyacaksın user ı selector kullanmak zorundasın
   const handleLogout = () => {
     logout()
