@@ -5,18 +5,19 @@ import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import { useNavigate } from "react-router-dom";
 import { fetchFail, fetchStart, loginSuccess,registerSuccess ,logoutSuccess} from "../features/authSlice";
 import { useDispatch , useSelector} from "react-redux";
+import useAxios from "./useAxios"
 
 const useAuthCalls = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
+  // const token = useSelector((state) => state.auth.token);
+  const { axiosWithToken, axiosPublic } = useAxios()
   const login = async (userInfo) => {
     dispatch(fetchStart());
 
     try {
       //!datayı dest ettik aşağıda responsta data.data yazmamak için
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/auth/login/`,
+      const { data } = await axiosPublic.post("/auth/login/",
         userInfo //buraya veri vermemiz gerek
         //apiden gelen veriyi loginsucces e pas geç burdak veri payload a gidicek ordaki user ı okumak istiyorum verinin içindeki userın içindeki username
       );
@@ -32,7 +33,7 @@ const useAuthCalls = () => {
   const register = async (registerInfo) => {
     dispatch(fetchStart());
     try {
-        const {data}=await axios.post(`${process.env.REACT_APP_BASE_URL}/users/`,  registerInfo)
+        const {data}=await axiosPublic.post("/users/",  registerInfo)
 
         toastSuccessNotify("register işlemi başarılı");
         dispatch(registerSuccess(data));
@@ -48,9 +49,7 @@ const useAuthCalls = () => {
   const logout = async () => {
     try {
         
-      await axios.get(`${process.env.REACT_APP_BASE_URL}/auth/logout`, {
-        headers: { Authorization: `Token ${token}` }
-      });
+      await axiosWithToken("/auth/logout");
       toastSuccessNotify("Logout işlemi başarılı");
       dispatch(logoutSuccess());
       navigate("/");
