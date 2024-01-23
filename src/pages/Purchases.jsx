@@ -34,7 +34,9 @@ const Purchases = () => {
   }, []) // eslint-disable-line
 
   return (
-    <Container maxWidth="xl" >
+    <Container maxWidth="xxl" sx={{
+   
+    }}>
       <Button variant="contained" onClick={handleOpen}>
         New Purchase
       </Button>

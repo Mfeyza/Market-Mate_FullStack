@@ -43,23 +43,28 @@ function Dashboard(props) {
    
   }, []);
   useEffect(()=>{
-    Swal.fire({
-      title: `Hoşgeldin ${user}`,
-      showClass: {
-        popup: `
-          animate__animated
-          animate__fadeInUp
-          animate__faster
-        `
-      },
-      hideClass: {
-        popup: `
-          animate__animated
-          animate__fadeOutDown
-          animate__faster
-        `
-      }
-    });
+    if(!sessionStorage.getItem('already')){
+      Swal.fire({
+        title: `Hoşgeldin ${user}`,
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+      sessionStorage.setItem('already','true')
+    }
+    
+ 
   },[])
 
   const drawer = (
