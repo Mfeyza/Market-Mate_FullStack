@@ -1,133 +1,121 @@
-import Avatar from "@mui/material/Avatar"
-import Container from "@mui/material/Container"
-import Grid from "@mui/material/Grid"
-import Typography from "@mui/material/Typography"
-import LockIcon from "@mui/icons-material/Lock"
-import image from "../assets/result.svg"
-import { Link } from "react-router-dom"
-import Box from "@mui/material/Box"
-import TextField from "@mui/material/TextField"
-import { Button } from "@mui/material"
-import { Formik, Form } from "formik"
-import { object, string } from "yup"
-import useAuthCalls from "../service/useAuthCalls"
+import Avatar from "@mui/material/Avatar";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import LockIcon from "@mui/icons-material/Lock";
+import image from "../assets/stockgif2-unscreen.gif";
+import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import TextFieldRL from "../components/TextFieldLR";
+import { Button } from "@mui/material";
+import { Formik, Form } from "formik";
+import { object, string } from "yup";
+import useAuthCalls from "../service/useAuthCalls";
+import { autoBatchEnhancer } from "@reduxjs/toolkit";
+import imgLogin from "../assets/user-login (1).svg";
 
 const Login = () => {
-  const {login}=useAuthCalls()
+  const { login } = useAuthCalls();
   const loginSchema = object({
     email: string()
-      .email("Lütfen geçerli bir email giriniz")
-      .required("Email girişi zorunludur"),
+      .email("Please enter a valid email.")
+      .required("Email entry is required."),
     password: string()
-      .required("Şifre zorunludur.")
-      .min(8, "Şifre en az 8 karakter içermelidir")
-      .max(16, "Şifre en falza 16 karakter içermelidir")
-      .matches(/\d+/, "Şifre en az bir rakam içermelidir")
-      .matches(/[a-z]/, "Şifre en az bir küçük harf içermelidir")
-      .matches(/[A-Z]/, "Şifre en az bir büyük harf içermelidir")
+      .required("The password is required.")
+      .min(8, "The password must be at least 8 characters long.")
+      .max(16, "The password must contain no more than 16 characters.")
+      .matches(/\d+/, "The password must contain at least one digit.")
+      .matches(
+        /[a-z]/,
+        "The password must contain at least one lowercase letter."
+      )
+      .matches(
+        /[A-Z]/,
+        "The password must contain at least one uppercase letter."
+      )
       .matches(
         /[@$!%*?&]+/,
-        "Şifre en az bir özel karakter (@$!%*?&) içermelidir"
+        "The password must contain at least one special character (@$!%*?&)."
       ),
-  })
+  });
+  const audio = new Audio('/open-and-closed-door-156814.mp3');
+ 
   return (
-    <Container maxWidth="lg">
+    
+    <Container maxWidth="xxl" className="loginContainer">
       <Grid
         container
         justifyContent="center"
         direction="row-reverse"
-        sx={{
-          height: "100vh",
-          p: 2,
-        }}
+       
       >
         <Grid item xs={12} mb={3}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
-          </Typography>
+          <Typography variant="h3" color="primary" align="center" sx={{
+            marginTop:"4rem"
+          }}>Market Mate</Typography>
         </Grid>
 
-        <Grid item xs={12} sm={10} md={6}>
-          <Avatar
-            sx={{
-              backgroundColor: "secondary.light",
-              m: "auto",
-              width: 40,
-              height: 40,
-            }}
-          >
-            <LockIcon size="30" />
-          </Avatar>
-          <Typography
-            variant="h4"
-            align="center"
-            mb={4}
-            color="secondary.light"
-          >
-            Login
-          </Typography>
-
+        <Grid item xs={12} sm={10} md={6}sx={{
+          marginTop:"5rem"
+        }} >
           <Formik
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
-            onSubmit={(values, actions) => {//direkt values u verebiliriz içide email ve password var
-              //TODO login(post) istegi
+            onSubmit={(values, actions) => {
               login(values)
               actions.resetForm()
-              actions.setSubmitting(false) //? isSubmitting
-              //? veriler global state'e aktırlabilir
-              //? navigasyon yapılabilir
-              //? tost yapılabilr
+              actions.setSubmitting(false)
+              audio.play()
             }}
-          >
-            {({ handleChange, values, touched, errors, handleBlur }) => (
-              <Form>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <TextField
-                    label="Email"
-                    name="email"
-                    id="email"
-                    type="email"
-                    variant="outlined"
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={errors.email}
-                  />
-                  <TextField
-                    label="password"
-                    name="password"
-                    id="password"
-                    type="password"
-                    variant="outlined"
-                    value={values.password}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    error={touched.password && Boolean(errors.password)}
-                    helperText={errors.password}
-                  />
-                  <Button variant="contained" type="submit">
-                    Submit
-                  </Button>
-                </Box>
-              </Form>
-            )}
-          </Formik>
+          >  
+            {(formikProps) => (
+              <>
+                <Form className="form">
+                  <div className="imgLoginDiv">
+                  <img  className="imgLogin" src={imgLogin} alt=""/>
+                  </div>
+                  
 
-          <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Do you have not an account?</Link>
+                  <Box >
+                    <div className="forminputs">
+                      <TextFieldRL
+                        formData={[
+                          { name: "email", label: "Email", type: "email" },
+                          {
+                            name: "password",
+                            label: "Password",
+                            type: "password",
+                          },
+                        ]}
+                        {...formikProps}
+                      />
+                      <Button variant="contained" type="submit" className="login-btn">
+                        Submit
+                      </Button>
+                    </div>
+                    <Box sx={{ textAlign: "center", mt: 2 }}>
+            <Link className="link" to="/register">Do you have not an account?</Link>
           </Box>
+                  </Box>
+                </Form>
+              </>
+            )}
+          
+          </Formik>
+         
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>
           <Container>
-            <img src={image} alt="img" />
+            <img src={image} alt="img" style={{
+              width:"150rem",
+              marginTop:"6rem"
+            }}/>
           </Container>
         </Grid>
       </Grid>
     </Container>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
