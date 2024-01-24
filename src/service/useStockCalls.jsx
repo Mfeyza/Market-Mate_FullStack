@@ -20,7 +20,7 @@ const useStockCalls = () => {
       dispatch(getStockSuccess({ apiData, url }));
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} bilgileri çekilemedi.`);
+      toastErrorNotify(`Failed to retrieve information from ${url}.`);
     }
   };
 
@@ -50,11 +50,11 @@ const useStockCalls = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.delete(`/${url}/${id}/`);
-      toastSuccessNotify(`${url} bilgisi silinmiştir.`);
+      toastSuccessNotify(`${url} information has been deleted.`);
       getStocks(url);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} silinemedi`);
+      toastErrorNotify(`${url} could not be deleted`);
     }
   };
 
@@ -62,11 +62,11 @@ const useStockCalls = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`/${url}/`, info);
-      toastSuccessNotify(`${url} kayıdı eklenmiştir.`);
+      toastSuccessNotify(`${url} record has been added.`);
       getStocks(url);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} kaydi eklenemiştir.`);
+      toastErrorNotify(`${url} record has not been added.`);
     }
   };
 
@@ -74,11 +74,11 @@ const useStockCalls = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`/${url}/${info._id}`, info);
-      toastSuccessNotify(`${url} kayıdı güncellenmiştir..`);
+      toastSuccessNotify(`${url} record has been updated.`);
       getStocks(url);
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(`${url} kaydi güncelenememiştir.`);
+      toastErrorNotify(`${url} record could not be updated.`);
     }
   };
   const searchStock = async (url = "firms", value = "") => {

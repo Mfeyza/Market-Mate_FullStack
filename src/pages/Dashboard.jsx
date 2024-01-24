@@ -45,7 +45,7 @@ function Dashboard(props) {
   useEffect(()=>{
     if(!sessionStorage.getItem('already')){
       Swal.fire({
-        title: `Hoşgeldin ${user}`,
+        title: `Welcome to Market Mate ${user} 🎈`,
         showClass: {
           popup: `
             animate__animated
@@ -62,6 +62,25 @@ function Dashboard(props) {
         }
       });
       sessionStorage.setItem('already','true')
+    }else{
+      Swal.fire({
+        title: `Keep going ${user} 🤘🏻`,
+        showClass: {
+          popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `
+        },
+        hideClass: {
+          popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `
+        }
+      });
+
     }
     
  
