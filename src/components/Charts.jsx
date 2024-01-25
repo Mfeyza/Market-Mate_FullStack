@@ -2,8 +2,6 @@ import React from 'react'
 import { Card, Title } from "@tremor/react";
 import { useSelector } from 'react-redux';
 import { AreaChart, BarChart,  Flex, Switch ,Subtitle} from "@tremor/react";
-import { Grid } from '@mui/material';
-
 
 const chartdata = [
     {
@@ -32,22 +30,22 @@ const Charts = () => {
     }));
 
   return (
-    
+   <div > 
    <div style={{
   
   display: 'flex', 
   justifyContent: 'center', 
   gap:"3rem",
-  marginTop:"5rem",
-  flexWrap:"wrap"
+  marginTop:"5rem"
   
 }} >
-  <Grid container spacing={5} >
-    <Grid item xs={12} md={6} >
-    <Card  >
+    <Card style={{
+      maxWidth:"50%",
+      maxHeight:"60vh"
+    }} >
     <Title >Total Sales (USD)</Title>
     <AreaChart
-      className="h-80 mt-4"
+      className="h-72 mt-4"
       data={salesData}
       index="date"
       yAxisWidth={65}
@@ -56,13 +54,17 @@ const Charts = () => {
       valueFormatter={valueFormatter}
     />
   </Card>
-  </Grid>
-  <Grid item xs={12} md={6} >
-  <Card >
+  <Card  
+    style={{
+    
+    maxWidth:"50%",
+    
+    
+   }}>
   <Title>Total Purchases</Title>
   <AreaChart
  
-    className="h-80 mt-4"
+    className="h-72 mt-4"
     data={purchasesData}
     index="date"
     yAxisWidth={65}
@@ -78,11 +80,8 @@ const Charts = () => {
     
   />
 </Card>
-</Grid>
-
-</Grid>
 </div>
-
+</div>
   )
 }
 

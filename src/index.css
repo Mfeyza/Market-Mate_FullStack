@@ -34,7 +34,7 @@
  justify-content: center;
  flex-direction: column;
  border-radius: 2rem;
- gap: 1rem;
+ gap: 3rem;
  width: 50%;
  padding: 3rem;
  box-shadow: 0 0 .1rem #41403e,
@@ -44,15 +44,6 @@
  0 0 1.1rem #4d4a44,
  inset 0 0 .3rem #2b2926be;
  background-color: #1818171d;
- @media screen and (max-width: 600px) {
-  width: 100%;
-  
- }
- @media screen and (max-width:892px){
-  width: 80%;
-  margin: auto;
- }
- 
   }
  
 
@@ -70,10 +61,6 @@ background: linear-gradient(to right, #067c33, #c2db32) !important;
     gap: 1.5rem;
     width: 70%;
     margin: auto;
-    @media screen and (max-width:600px){
-      width: 100%;
-      
-     }
    
   }
 
@@ -168,8 +155,6 @@ animation: rotate 1.2s ease-in infinite, moveY 1.2s ease-in infinite ;
 .backround{
   background-image: radial-gradient( circle 759px at -6.7% 50%,  rgba(80,131,73,1) 0%, rgb(41, 46, 40) 26.2%, rgba(178,231,170,1) 50.6%, rgb(27, 32, 26) 74.1%, rgba(75,118,69,1) 100.3% );
   min-height: 100vh;
- 
-  background-attachment: fixed;
 
 }
 
@@ -207,8 +192,6 @@ input:-webkit-autofill:active{
   display: flex;
   justify-content: space-evenly;
   margin-top: 4rem;
-  flex-wrap: wrap;
-  gap: 2rem;
 }
 
 .searchinput{

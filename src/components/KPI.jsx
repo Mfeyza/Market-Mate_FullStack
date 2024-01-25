@@ -41,7 +41,7 @@ const KPI = () => {
         },
       ]
       return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px', marginTop:"3rem" }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '20px' }}>
             {kpiData.map(({ id, title, amount, icon, bgColor, color }) => (
                 <Card key={id} className="max-w-xs dark:bg-white" decoration="top" decorationColor="white" bgcolor={bgColor}>
                     <Text color={color}>{title}</Text>
