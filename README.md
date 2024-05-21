@@ -40,19 +40,20 @@ Sales: Satış işlemlerinin listesi ve detayları
 ![image](https://github.com/Mfeyza/Market-Mate_FullStack/assets/144602340/565dd670-5cfa-4a8f-9134-b76ab7fc1349)
 
 
-Market Mate / Stock Management System
-Live: https://market-mate-mfy.vercel.app/
-Description
+## Market Mate / Stock Management System
+## Live: https://market-mate-mfy.vercel.app/
+## Description
 The Stock Management System is a comprehensive system for managing inventory, brands, firms, and products. The system includes features such as authentication, data visualization, and CRUD (Create, Read, Update, Delete) operations for various entities. This project is designed to facilitate stock management and help businesses manage their inventory more efficiently.
 
-Features
+##Features
 User Authentication: Login, Token Renewal, Logout
 CRUD Operations: CRUD operations for Users, Brands, Firms, and Products
 Data Visualization: Data visualization with charts
 Responsive Interface: A responsive and user-friendly interface optimized for both mobile and desktop devices
 Notification System: Notifications for success, warning, and error messages
 Dependencies
-The project uses the following core dependencies:
+
+##The project uses the following core dependencies:
 
 React: For building the user interface
 Redux: For state management
@@ -64,7 +65,8 @@ Yup: For validation
 React-Toastify: For notifications
 TailwindCSS: For styling
 SweetAlert2: For beautiful alerts and notifications
-Components
+
+## Components
 The project includes various components that serve different functions:
 
 Dashboard: General system status and statistics
