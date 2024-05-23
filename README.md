@@ -78,7 +78,7 @@ The project uses the following core dependencies:
 │ └── globalStyle.jsx
 └── tailwind.config.js
 ````
-![image](https://github.com/Mfeyza/Market-Mate_FullStack/assets/144602340/565dd670-5cfa-4a8f-9134-b76ab7fc1349)
+
 
 
 ## Getting Started
