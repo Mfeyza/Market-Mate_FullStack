@@ -56,7 +56,7 @@ const Login = () => {
         </Grid>
 
         <Grid item xs={12} sm={10} md={6}sx={{
-          marginTop:"5rem"
+          marginTop:"5rem",marginBottom:"5 rem"
         }} >
           <Formik
             initialValues={{ email: "", password: "" }}
