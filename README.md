@@ -80,7 +80,7 @@ The project uses the following core dependencies:
 ````
 
 <div>
-   <img src="./assets/stockgif1.gif">
+   <img src="./src/assets/stockgif1.gif">
 </div>
 
 
