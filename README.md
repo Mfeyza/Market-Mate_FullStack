@@ -79,6 +79,9 @@ The project uses the following core dependencies:
 └── tailwind.config.js
 ````
 
+<div>
+   <img src="./src/assets/stockgif2.gif">
+</div>
 
 
 ## Getting Started
